@@ -16,6 +16,7 @@ import {NoteEdtDialogComponent} from '../note-edt-dialog/note-edt-dialog.compone
 export class NotesComponent implements OnInit {
 
   private _notes: Note[];
+  private readonly SNACKBAR_DELAY: number = 3000;
 
   constructor(
     private _noteService: NoteService,
@@ -38,7 +39,7 @@ export class NotesComponent implements OnInit {
           this._notes = notes;
         },
         (error) => {
-          this._snackBar.open('There was a problem retrieving notes from the server');
+          this._snackBar.open('There was a problem retrieving notes from the server', 'Ok', {duration: this.SNACKBAR_DELAY});
           console.log('Error retrieving notes', error);
         });
   }
@@ -67,7 +68,7 @@ export class NotesComponent implements OnInit {
         this._noteService.addNote(note)
           .subscribe((added: Note) => {
             console.log('added note', {added});
-            this._snackBar.open('Note added.');
+            this._snackBar.open('Note added.', 'Ok', {duration: this.SNACKBAR_DELAY});
             this._getAllNotes();
           }, (error) => {
             console.log('error adding note', {error});
