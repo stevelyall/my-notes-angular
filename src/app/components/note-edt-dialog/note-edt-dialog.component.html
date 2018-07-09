@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>New Note</h1>
+<form [formGroup]="noteForm">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <textarea matInput placeholder="Title" id="title" name="title"
+                matTextareaAutosize matAutosizeMinRows=1 matAutosizeMaxRows=6
+                formControlName="title" cdkFocusInitial>
+
+      </textarea>
+    </mat-form-field>
+    <mat-error *ngIf="noteForm.controls['title'].hasError('required')">
+      A title is required.
+    </mat-error>
+    <mat-error *ngIf="noteForm.controls['title'].hasError('maxlength')">
+      The title must be less than 255 characters.
+    </mat-error>
+
+
+    <mat-form-field>
+    <textarea matInput placeholder="Content" id="content" name="content"
+              matTextareaAutosize matAutosizeMinRows=10 matAutosizeMaxRows=15
+              formControlName="content">
+    </textarea>
+
+      <mat-error *ngIf="noteForm.controls['content'].hasError('required')">
+        The note's content is required.
+      </mat-error>
+      <mat-error *ngIf="noteForm.controls['content'].hasError('maxlength')">
+        The note's content must be less than 1024 characters.
+      </mat-error>
+
+
+    </mat-form-field>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="noteForm.value"
+            [disabled]="noteForm.invalid">Save</button>
+  </mat-dialog-actions>
+</form>

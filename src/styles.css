@@ -1,0 +1,16 @@
+/*Global styles for notes app*/
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+:root {
+  --primary-color: #303F9F;
+  --text-light-color: #FFFFFF;
+  --text-dark-color: #212121;
+  --text-secondary-color: #757575;
+  --accent-color: #448AFF;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
